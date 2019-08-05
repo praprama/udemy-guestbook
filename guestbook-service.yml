@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: guestbook-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: udemy-guestbook
+    name: guestbook-frontend
+  ports:
+    - port: 80
+      targetPort: 80

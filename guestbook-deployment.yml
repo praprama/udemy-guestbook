@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guestbook-frontend
+  labels:
+    app: udemy-guestbook
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: udemy-guestbook
+      name: guestbook-frontend
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: guestbook-frontend
+        image: gcr.io/google-samples/gb-frontend:v4
+        labels:
+          app: udemy-guestbook
+          name: guestbook-frontend
+        ports:
+        - containerPort: 80
